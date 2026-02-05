@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,11 +17,11 @@ const Navigation = () => {
   }, []);
 
   const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#experience", label: "Experience" },
-    { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
+    { to: "/about", label: "About" },
+    { to: "/skills", label: "Skills" },
+    { to: "/experience", label: "Experience" },
+    { to: "/projects", label: "Projects" },
+    { to: "/contact", label: "Contact" },
   ];
 
   return (
@@ -33,21 +35,29 @@ const Navigation = () => {
       <div className="container px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="text-xl font-bold text-foreground hover:text-primary transition-colors">
+          <Link to="/" className="text-xl font-bold text-foreground hover:text-primary transition-colors">
             MM<span className="text-primary">.</span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors relative group"
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`text-sm transition-colors relative group ${
+                  location.pathname === link.to
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-              </a>
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                    location.pathname === link.to ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
+              </Link>
             ))}
             <Button 
               size="sm" 
@@ -73,14 +83,18 @@ const Navigation = () => {
           <div className="md:hidden py-4 border-t border-border/50">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors py-2"
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={`py-2 transition-colors ${
+                    location.pathname === link.to
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <Button 
                 size="sm" 

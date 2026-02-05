@@ -1,5 +1,6 @@
-import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const HeroSection = () => {
@@ -41,7 +42,7 @@ const HeroSection = () => {
               Software Engineer • Database Admin • Data Scientist
             </p>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground animate-slide-up" style={{ animationDelay: '0.3s' }}>
-              Hi, I'm <span className="text-gradient">Mary Mbugua</span>
+              Hi, I'm <span className="text-primary">Mary Mbugua</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.5s' }}>
               Building scalable applications and cloud solutions with 6+ years of database expertise. 
@@ -56,7 +57,7 @@ const HeroSection = () => {
               className="gradient-accent text-primary-foreground font-semibold px-8 py-6 text-base shadow-glow hover:shadow-card-hover transition-all duration-300 hover:scale-105"
               asChild
             >
-              <a href="#contact">Get In Touch</a>
+              <Link to="/contact">Get In Touch</Link>
             </Button>
             <Button 
               variant="outline" 
@@ -64,7 +65,7 @@ const HeroSection = () => {
               className="border-primary/30 text-foreground hover:bg-primary/10 hover:border-primary/50 px-8 py-6 text-base transition-all duration-300"
               asChild
             >
-              <a href="#projects">View My Work</a>
+              <Link to="/projects">View My Work</Link>
             </Button>
           </div>
 
@@ -96,13 +97,6 @@ const HeroSection = () => {
               <Github className="w-5 h-5" />
             </a>
           </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">
-            <ChevronDown className="w-6 h-6" />
-          </a>
         </div>
       </div>
     </section>

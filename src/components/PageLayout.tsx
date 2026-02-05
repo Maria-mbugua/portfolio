@@ -1,0 +1,19 @@
+import Navigation from "@/components/Navigation";
+import { ReactNode } from "react";
+
+interface PageLayoutProps {
+  children: ReactNode;
+}
+
+const PageLayout = ({ children }: PageLayoutProps) => {
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <main className="pt-16">
+        {children}
+      </main>
+    </div>
+  );
+};
+
+export default PageLayout;
