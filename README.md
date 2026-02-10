@@ -20,8 +20,8 @@ To run this project locally, follow these steps:
 
 1. **Clone the repository**
    ```sh
-   git clone <YOUR_GIT_URL>
-   cd <YOUR_PROJECT_NAME>
+   git clone https://github.com/Maria-mbugua/portfolio.git
+   cd portfolio
    ```
 
 2. **Install dependencies**
